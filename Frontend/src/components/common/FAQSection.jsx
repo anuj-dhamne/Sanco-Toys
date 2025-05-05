@@ -3,24 +3,29 @@ import { ChevronDown, ChevronUp } from 'lucide-react' // Make sure lucide-react 
 
 const faqs = [
   {
-    question: "What is your return policy?",
+    question: "Are Sanco Toys Products safe for children?",
     answer:
-      "We offer a 30-day return policy. You can return any item within 30 days of purchase.",
+      "Yes, safety is our top priority at Sanco Toys. All of our products undergo rigorous testing to meet and exceed safety standards set by regulatory agencies. We use non-toxic materials and adhere to strict quality control measures to ensure the safety of children while playing with our toys.",
   },
   {
-    question: "Do you offer international shipping?",
+    question: "Do you offer any warranties or guarantees on your products?",
     answer:
-      "Yes, we ship to most countries worldwide. Shipping fees and delivery times vary depending on the destination.",
+      "Yes, we stand behind the quality of our products. Sanco Toys offers a [insert warranty duration] warranty on all purchases. If you encounter any issues with your toy, please contact our customer service team for assistance.",
   },
   {
-    question: "How can I track my order?",
+    question: "How can I clean and maintain Sanco Toys products?",
     answer:
-      "Once your order has been shipped, we will send you a tracking number via email.",
+      "To clean our toys, we recommend using mild soap and water. Avoid harsh chemicals or abrasive cleaners, as they may damage the materials. For specific care instructions, please refer to the product packaging or contact our customer service team.",
   },
   {
-    question: "What payment methods are accepted?",
+    question: "Are Sanco Toys products eco-friendly?",
     answer:
-      "We accept Visa, MasterCard, PayPal, UPI, and most major debit/credit cards.",
+      "Yes, we are committed to sustainability and minimizing our environmental impact. Whenever possible, we use eco-friendly materials and packaging in the production of our toys. We strive to create products that are both safe for children and gentle on the planet.",
+  },
+  {
+    question: "Can Sanco Toys products be used in educational settings, such as schools or daycare centers?",
+    answer:
+      "Yes, many of our toys are suitable for use in educational settings. Teachers and childcare providers appreciate the educational value and durability of our products, which can enhance learning experiences in classrooms, daycare centers, and homeschool environments.",
   },
 ]
 
@@ -57,7 +62,7 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
+    <section className="max-w-4xl mx-auto px-4 py-12" id="faq">
       <h2 className="text-3xl font-bold text-center text-gray-900 mb-10">
         Frequently Asked Questions
       </h2>

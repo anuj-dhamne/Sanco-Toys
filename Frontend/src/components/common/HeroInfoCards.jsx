@@ -3,53 +3,53 @@ import React from 'react';
 const heroData = [
   {
     id: 1,
-    title: 'Innovative Smart Toys for the Future',
+    title: 'Power Tanker',
     description:
-      'Explore our app-controlled toys and robots that bring technology and play together.',
+      'Fuel up your playtime with our Power Tanker Truck!',
     image: '/public/PT.png',
     background: '/public/PT_bg.jpg',
     reverse: false,
   },
   {
     id: 2,
-    title: 'Interactive Learning Robots',
-    description: 'Make learning fun with our interactive AI-powered toys.',
+    title: 'Dumper Truck',
+    description: 'Calling all junior builders! Our Dumper Truck is designed for kids who love to dig, haul, and dump.',
     image: '/public/DT.jpg',
     background: '/public/DT_bg.jpg',
     reverse: true,
   },
   {
     id: 3,
-    title: 'Creative Building Kits',
-    description: 'Spark creativity with toys designed for young inventors.',
+    title: 'Concrete Mixer',
+    description: 'Mix up some construction fun with our Concrete Mixer Truck! ',
     image: '/public/CM.png',
     background: '/public/CM_bg.jpg',
     reverse: false,
   },
-  {
-    id: 4,
-    title: 'Augmented Reality Games',
-    description: 'Bring toys to life with our AR-enhanced experiences.',
-    image: '/public/ML.png',
-    background: '/public/ML_bg.jpeg',
-    reverse: true,
-  },
-  {
-    id: 5,
-    title: 'Eco-Friendly Smart Toys',
-    description: 'Sustainability meets innovation in our eco-smart toy line.',
-    image: '/public/FF.png',
-    background: '/public/FF_bg.jpeg',
-    reverse: false,
-  },
+  // {
+  //   id: 4,
+  //   title: 'Augmented Reality Games',
+  //   description: 'Bring toys to life with our AR-enhanced experiences.',
+  //   image: '/public/ML.png',
+  //   background: '/public/ML_bg.jpeg',
+  //   reverse: true,
+  // },
+  // {
+  //   id: 5,
+  //   title: 'Eco-Friendly Smart Toys',
+  //   description: 'Sustainability meets innovation in our eco-smart toy line.',
+  //   image: '/public/FF.png',
+  //   background: '/public/FF_bg.jpeg',
+  //   reverse: false,
+  // },
 ];
 
 const HeroCard = ({ title, description, image, background, reverse }) => {
   const gradientDirection = reverse ? 'to left' : 'to right';
 
   return (
-    <section className="flex   justify-center items-center py-12 px-4">
-      <div className="relative w-full max-w-5xl rounded-xl shadow-lg overflow-hidden border-4 border-black">
+    <section className="flex justify-center items-center py-12 px-4">
+      <div className="relative w-full max-w-5xl rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
         {/* Background Image */}
         <div
           className="absolute inset-0"
@@ -93,6 +93,7 @@ const HeroCard = ({ title, description, image, background, reverse }) => {
     </section>
   );
 };
+
 
 const HeroSection = () => {
   return (

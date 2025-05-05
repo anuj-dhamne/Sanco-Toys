@@ -13,32 +13,16 @@ const About = () => {
           </p>
 
           <p>
-            At SancoToys, we believe play is essential for learning and development. That's why we carefully curate a
-            diverse collection of toys — from puzzles and educational games to action figures, vehicles, and soft toys —
-            that spark joy and creativity in every child.
+            Sanco Toys was founded with a passion for creating high-quality, safe, and fun
+            ventures toys for children. Our journey began with a small team of dedicated toy
+            enthusiasts who believed in the power of play to inspire creativity and adventure.
+            Today, we are proud to offer a range of toys that bring joy to children."
           </p>
-
+          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Mission</h2>
           <p>
-            With over a decade of experience in the toy industry, our mission is simple: to bring endless smiles to
-            families across the world by offering top-quality products and excellent customer service.
+          "Our mission is to provide toys that spark imagination and promote adventure in
+          children. We value safety, creativity, and quality in everything we do."
           </p>
-        </div>
-
-        <div className="mt-16">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Visit Us</h2>
-          <div className="w-full h-[400px] rounded-xl overflow-hidden shadow-md">
-  <iframe
-    title="Sanco Toys India Location"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.314631373901!2d73.8014473!3d18.6429455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b93706031c95%3A0x5b32aafd8ca27dfb!2sSanco%20Toys%20India%20Pvt.Ltd!5e0!3m2!1sen!2sin!4v1712072343941!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen=""
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
-
         </div>
       </div>
     </div>

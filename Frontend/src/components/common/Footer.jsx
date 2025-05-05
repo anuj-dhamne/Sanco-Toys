@@ -14,12 +14,12 @@ const Footer = () => {
         {/* Logo Section */}
         <div className="flex flex-col items-start space-y-4">
           <img
-            src="/Sanco.png"
+            src="/sanco_logo.png"
             alt="Sanco Toys Logo"
             className="h-16 w-auto"
           />
-          <p className="text-sm text-gray-600">
-            Sanco Toys - Spreading smiles with every toy.
+          <p className="text-sm text-gray-500 font-bold">
+          Where Imagination Comes to Life.
           </p>
         </div>
 
@@ -29,22 +29,22 @@ const Footer = () => {
             <h4 className="font-semibold text-gray-800">Company</h4>
             <a href="/about" className="hover:text-blue-500 block">About Us</a>
             <a href="/contact" className="hover:text-blue-500 block">Contact Us</a>
-            <a href="/careers" className="hover:text-blue-500 block">Careers</a>
-            <a href="/certifications" className="hover:text-blue-500 block">Certifications</a>
+            <a href="/contact" className="hover:text-blue-500 block">Careers</a>
+            <a href="/" className="hover:text-blue-500 block">Certifications</a>
           </div>
 
           <div className="space-y-2">
             <h4 className="font-semibold text-gray-800">Support</h4>
             <a href="/customer-care" className="hover:text-blue-500 block">Customer Care</a>
-            <a href="/faq" className="hover:text-blue-500 block">FAQs</a>
-            <a href="/shipping" className="hover:text-blue-500 block">Shipping</a>
-            <a href="/returns" className="hover:text-blue-500 block">Returns</a>
+            <a href="#faq" className="hover:text-blue-500 block">FAQs</a>
+            {/* <a href="/" className="hover:text-blue-500 block">Shipping</a>
+            <a href="/" className="hover:text-blue-500 block">Returns</a> */}
           </div>
 
           <div className="space-y-2">
             <h4 className="font-semibold text-gray-800">Legal</h4>
-            <a href="/privacy-policy" className="hover:text-blue-500 block">Privacy Policy</a>
-            <a href="/terms" className="hover:text-blue-500 block">Terms & Conditions</a>
+            <a href="/privacy-policies" className="hover:text-blue-500 block">Privacy Policy</a>
+            <a href="/terms&conditions" className="hover:text-blue-500 block">Terms & Conditions</a>
             <div className="flex space-x-4 pt-2">
               <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                 <Instagram className="w-5 h-5 hover:text-pink-500" />

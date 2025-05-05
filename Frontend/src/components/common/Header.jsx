@@ -145,7 +145,7 @@ const Navbar = ({ userData }) => {
           <>
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
               <Link to="/" className="flex items-center">
-                <img src="/Sanco.png" alt="Logo" className="h-16 w-auto" />
+                <img src="/sanco_logo.png" alt="Logo" className="h-16 w-auto" />
               </Link>
               <div className="hidden md:flex items-center space-x-7 text-[17px]">
                 <Link to="/" className={linkClass}>Dashboard</Link>
@@ -176,7 +176,7 @@ const Navbar = ({ userData }) => {
           <>
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
               <Link to="/" className="flex items-center">
-                <img src="/Sanco.png" alt="Logo" className="h-16 w-auto" />
+                <img src="/sanco_logo.png" alt="Logo" className="h-16 w-auto" />
               </Link>
               <div className="hidden md:flex items-center space-x-7 text-[17px]">
                 <Link to="/" className={linkClass}>Home</Link>
@@ -214,7 +214,7 @@ const Navbar = ({ userData }) => {
       <SignedOut>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src="/Sanco.png" alt="Logo" className="h-16 w-auto" />
+            <img src="/sanco_logo.png" alt="Logo" className="h-16 w-auto" />
           </Link>
           <div className="hidden md:flex items-center space-x-7 text-[17px]">
             <Link to="/" className={linkClass}>Home</Link>
