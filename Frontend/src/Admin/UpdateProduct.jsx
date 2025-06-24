@@ -71,7 +71,7 @@ const UpdateProductForm = () => {
     console.log("data to update : ",updatedData);
     try {
       await axios.patch(
-        `http://localhost:5000/api/v1/product/update-product/${id}`,
+        `${import.meta.env.VITE_SERVER}/product/update-product/${id}`,
         updatedData,
         {
           headers: {

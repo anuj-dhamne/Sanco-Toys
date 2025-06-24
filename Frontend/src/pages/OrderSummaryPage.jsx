@@ -14,7 +14,7 @@ const OrderSummaryPage = () => {
   useEffect(() => {
     const fetchCart = async () => {
       const token = await getToken();
-      const res = await axios.get("http://localhost:5000/api/v1/cart/get-cart", {
+      const res = await axios.get(`${import.meta.env.VITE_SERVER}/cart/get-cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCart(res.data.data);
@@ -23,7 +23,7 @@ const OrderSummaryPage = () => {
   }, []);
 
   const handlePayment = async () => {
-    console.log("in handle payment function");
+    // console.log("in handle payment function");
     if (!address.trim()) {
       toast.error("Please enter your shipping address");
       return;
@@ -31,19 +31,19 @@ const OrderSummaryPage = () => {
 
     const res = await loadRazorpayScript();
     if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
+      toast.error("Razorpay SDK failed to load. Are you online?");
       return;
     }
 
     const token = await getToken();
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/payment/create-order",
+      `${import.meta.env.VITE_SERVER}/payment/create-order`,
       { amount: totalAmount ,shippingAddress:address },
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    console.log("data from backend : ",data);
-    console.log("amount data : ",data.data.amount);
+    // console.log("data from backend : ",data);
+    // console.log("amount data : ",data.data.amount);
 
     const options = {
       key: `${import.meta.env.VITE_RAZORPAY_KEY}`,
@@ -54,7 +54,7 @@ const OrderSummaryPage = () => {
       order_id: data.data.id,
       handler: async function (response) {
         const verificationResponse = await axios.post(
-          "http://localhost:5000/api/v1/payment/verify",
+          `${import.meta.env.VITE_SERVER}/payment/verify`,
           {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,

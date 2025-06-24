@@ -45,7 +45,6 @@ function App() {
   const userData = useUserStore((state) => state.userData);
   const { getToken } = useAuth();
   const token = getToken();
-  // console.log("token :",token);
   return (
     <>
       <Navbar userData={userData} />

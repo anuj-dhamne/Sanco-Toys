@@ -4,9 +4,6 @@ import { ApiResponse} from "../utils/ApiResponse.js"
 import {  clerkClient  } from "@clerk/clerk-sdk-node";
 
 const getAlluser=asyncHandler(async(req,res)=>{
-    // if (!req.auth || !req.auth.userId) {
-    //     return res.status(401).json(new ApiResponse(401, null, "Unauthorized request"));
-    // }
     const users=await User.find({role:"user"});
     if(!users){
         return res.status(500).json(new ApiResponse(500,users,"Users not found ! "));

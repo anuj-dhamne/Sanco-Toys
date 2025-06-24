@@ -18,33 +18,16 @@ export const SyncUser = () => {
         if (!token) return;
 
         // First, sync user
-        const userRes = await axios.get("http://localhost:5000/api/v1/sync-user", {
+        const userRes = await axios.get(`${import.meta.env.VITE_SERVER}/sync-user`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
         const user = userRes.data.user;
         setUserData(user);
 
-        console.log("User : ",user);
-        // Then, fetch cart
 
-
-        // this part will uncomment later 
-    
-        const cartRes = await axios.get(`http://localhost:5000/api/v1/cart/get-cart`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setCart(cartRes.data.data || []);
-        console.log("Cart response in Sync User : ",cartRes.data.data);
-        // Then, fetch orders
-        // const orderRes = await axios.get(`http://localhost:5000/api/v1/order/get-user-orders`, {
-        //   headers: { Authorization: `Bearer ${token}` },
-        // });
-        // setOrders(orderRes.data.orders || []);
-
-        console.log("✅ User, cart, and orders synced successfully.");
       } catch (err) {
-        console.error("❌ Sync error:", err.response?.data || err.message);
+      toast.error("Error for syncing user !");
       }
     };
 

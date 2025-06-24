@@ -15,13 +15,13 @@ const CartItemList = () => {
   const fetchCart = async () => {
     try {
       const token = await getToken();
-      const res = await axios.get("http://localhost:5000/api/v1/cart/get-cart", {
+      const res = await axios.get(`${import.meta.env.VITE_SERVER}/cart/get-cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCart(res.data.data);
-      console.log("The cart data:", res.data.data);
     } catch (err) {
-      console.error("Fetching cart failed:", err);
+      // console.error("Fetching cart failed:", err);
+      toast.error("There So no Product in cart !");
     } finally {
       setLoading(false);
     }

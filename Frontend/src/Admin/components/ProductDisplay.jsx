@@ -19,16 +19,15 @@ const handleEdit = () => {
 const handleDelete=async(product)=>{
   const token = await getToken();
   try {
-    const res= await axios.delete(`http://localhost:5000/api/v1/product/delete-product/${product._id}`,{
+    const res= await axios.delete(`${import.meta.env.VITE_SERVER}/product/delete-product/${product._id}`,{
       headers:{
         Authorization:`Bearer ${token}`
       }
     })
     toast.success("Product deleted successfully ! ");
     refreshProducts()
-    console.log("res",res);
   } catch (error) {
-    console.log("error : ",error);
+    toast.error("Not able to delete product !");
   }
 }
 

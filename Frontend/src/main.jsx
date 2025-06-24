@@ -8,7 +8,7 @@ import { SyncUser } from "./components/Sync-User";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (clerkPubKey) {
-  console.log("clerkPub key : ", clerkPubKey);
+  // console.log("clerkPub key : ", clerkPubKey);
 }
 
 createRoot(document.getElementById('root')).render(

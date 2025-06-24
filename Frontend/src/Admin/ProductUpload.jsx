@@ -62,7 +62,7 @@ const ProductUploadForm = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/v1/product/create-product",
+                `${import.meta.env.VITE_SERVER}/product/create-product`,
                 data,
                 {
                     headers: {
@@ -84,7 +84,6 @@ const ProductUploadForm = () => {
                 videos: [],
             });
         } catch (err) {
-            console.error("Upload failed:", err.response?.data || err.message);
             toast.error("❌ Upload failed. Try again.");
         } finally {
             setLoading(false);

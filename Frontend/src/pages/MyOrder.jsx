@@ -13,13 +13,13 @@ const MyOrders = () => {
     const fetchOrders = async () => {
       try {
         const token = await getToken();
-        const res = await axios.get("http://localhost:5000/api/v1/order/get-user-orders", {
+        const res = await axios.get(`${import.meta.env.VITE_SERVER}/order/get-user-orders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log("response for my orders:", res.data);
+        // console.log("response for my orders:", res.data);
         setOrders(res.data.data);
       } catch (err) {
-        console.error("Failed to fetch orders:", err);
+        // console.error("Failed to fetch orders:", err);
       }
     };
 
@@ -28,7 +28,7 @@ const MyOrders = () => {
 
   const openInvoicePreview = (invoiceBase64) => {
     if (!invoiceBase64) {
-      alert("Invoice not available.");
+      toast.error("Invoice not available.");
       return;
     }
     setInvoicePreview(invoiceBase64);

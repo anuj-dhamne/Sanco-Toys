@@ -7,11 +7,10 @@ function Products() {
 
     const fetchProducts = async () => {
         try {
-            const res = (await axios.get("http://localhost:5000/api/v1/product/get-all-products")).data.data;
+            const res = (await axios.get(`${import.meta.env.VITE_SERVER}/product/get-all-products`)).data.data;
             setResponse(res);
-            console.log("response : ", res);
         } catch (error) {
-            console.log("There is some error in fetching products ", error);
+            toast.error("Error in fetch products.");
         }
     };
 

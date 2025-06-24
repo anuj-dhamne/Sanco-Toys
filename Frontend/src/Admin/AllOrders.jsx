@@ -17,14 +17,13 @@ const AdminOrders = () => {
     try {
       const token = await getToken();
       const res = await axios.get(
-        "http://localhost:5000/api/v1/order/get-all-orders",
+        `${import.meta.env.VITE_SERVER}/order/get-all-orders`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
       setOrders(res.data.data);
     } catch (err) {
-      console.error("Failed to fetch orders", err);
       toast.error("Failed to fetch orders");
     }
   };
@@ -34,7 +33,7 @@ const AdminOrders = () => {
     const token = await getToken();
     try {
       await axios.patch(
-        `http://localhost:5000/api/v1/order/update-order-status/${orderId}`,
+        `${import.meta.env.VITE_SERVER}/order/update-order-status/${orderId}`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -43,7 +42,6 @@ const AdminOrders = () => {
       toast.success("Order status updated!");
       fetchOrders();
     } catch (err) {
-      console.error("Failed to update order status", err);
       toast.error("Failed to update status");
     } finally {
       setUpdatingStatus("");
