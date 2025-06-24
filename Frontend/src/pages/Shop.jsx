@@ -28,6 +28,7 @@ function Products() {
         <ProductUser product={p} key={p._id} refreshProducts={fetchProducts}/>
     )
    }
+   <p className='text-center '>**Orders placed from Pune City or Pimpri-Chinchwad will be delivered in one day</p>
    </>
   )
 }

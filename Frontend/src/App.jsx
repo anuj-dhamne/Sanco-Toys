@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { SignInButton, useAuth } from "@clerk/clerk-react";
+
 import {
   SignedIn,
   SignedOut,
@@ -20,8 +21,9 @@ import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import TnC from "./pages/TnC";
-import PrivacyPolicy from "./pages/PrivacyPolicy"
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CustomerCare from "./pages/CustCare.jsx";
+import Certification from "./pages/Certification.jsx";
 
 // private routes
 import Cart from "./pages/Cart"
@@ -59,6 +61,7 @@ function App() {
         <Route path="/privacy-policies" element={<PrivacyPolicy />} />
         <Route path="/feedback-form" element={<Feedback />} />
         <Route path="/customer-care" element={<CustomerCare/>} />
+        <Route path="/certification" element={<Certification />} />
 
         {/* Clerk Auth Routes */}
         <Route

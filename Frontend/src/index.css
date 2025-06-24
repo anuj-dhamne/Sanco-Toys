@@ -1,1 +1,124 @@
 @import "tailwindcss";
+/* In src/index.css or App.css */
+body {
+  font-family: "DynaPuff", system-ui,'Orbitron', 'sans-serif';
+
+      
+}
+.normal-font{
+  font-weight: 200;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  
+  
+  @keyframes flipIn {
+    0% {
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  }
+  
+  .blink-on-hover:hover {
+    animation: blink 1s infinite;
+  }
+  
+  .animate-flip-in {
+    animation: flipIn 1s ease-out forwards;
+  }
+  @keyframes slide-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 3s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 3s ease-out forwards;
+  }
+  
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 2s ease-out both;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in-up 1s ease-out both;
+  }
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+  }
+  
+  .delay-\[200ms\] {
+    animation-delay: 0.2s;
+  }
+  .delay-\[400ms\] {
+    animation-delay: 0.4s;
+  }
+  .delay-\[600ms\] {
+    animation-delay: 0.6s;
+  }
+  /* styles.css */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px); /* Start below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+    

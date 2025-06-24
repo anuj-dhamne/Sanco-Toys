@@ -1,70 +1,63 @@
-import React, { useRef, useEffect, useState } from "react"
-import { motion, useAnimationFrame } from "framer-motion"
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const speedMap = {
-  fast: 50,
-  normal: 30,
-  slow: 15,
-}
+const InfiniteMovingCards = ({ items = [], direction = 'left', speed = 'normal' }) => {
+  // Speed in pixels per second
+  const scrollSpeed = {
+    slow: 20,
+    normal: 40,
+    fast: 60,
+  }[speed] || 40;
 
-export function InfiniteMovingCards({
-  items = [],
-  direction = "left",
-  speed = "normal",
-}) {
-  const containerRef = useRef(null)
-  const contentRef = useRef(null)
-  const [x, setX] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
-  const [scrollWidth, setScrollWidth] = useState(0)
+  const animationDuration = `${items.length * scrollSpeed}s`;
 
-  const speedValue = direction === "left" ? -speedMap[speed] : speedMap[speed]
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setScrollWidth(contentRef.current.scrollWidth / 3) // one set width
-    }
-  }, [items])
-
-  useAnimationFrame((_, delta) => {
-    if (!isHovered) {
-      setX((prevX) => {
-        let nextX = prevX + (speedValue * delta) / 1000
-        if (Math.abs(nextX) >= scrollWidth) {
-          return 0
-        }
-        return nextX
-      })
-    }
-  })
+  const loopAnimation = {
+    animate: {
+      x: direction === 'left' ? ['0%', '-100%'] : ['-100%', '0%'],
+    },
+    transition: {
+      repeat: Infinity,
+      ease: 'linear',
+      duration: items.length * 10, // Adjust based on length
+    },
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden py-6 bg-white"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="overflow-hidden w-full h-100">
       <motion.div
-        ref={contentRef}
-        className="flex whitespace-nowrap gap-8"
-        style={{ x }}
+        className="flex gap-6"
+        {...loopAnimation}
       >
-        {[...items, ...items, ...items].map((item, index) => (
+        {[...items, ...items, ...items, ...items].map((item, index) => (
           <div
             key={index}
-            className="flex-none bg-white border border-gray-200 shadow-md rounded-2xl px-8 py-6 w-[360px] text-left break-words min-h-[200px] flex flex-col justify-between"
+            className={`relative min-w-[350px] max-w-[320px] border-t-4 ${item.borderColor || 'border-gray-300'
+              } bg-white p-6 rounded-xl shadow-md flex flex-col justify-between hover:shadow-xl`}
           >
-            <p className="text-gray-800 text-base leading-relaxed mb-4 whitespace-pre-line">
-              &ldquo;{item.quote}&rdquo;
-            </p>
-            <div className="text-gray-600 text-sm mt-auto">
-              <strong className="block text-md text-black">{item.name}</strong>
-              {item.role}
+            <p className="text-gray-700 mb-4 italic">"{item.quote}"</p>
+
+            {/* Footer with name, role, and image */}
+            <div className="mt-6 flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
+                <p className="text-sm text-gray-500">{item.role}</p>
+              </div>
+
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-15 h-15 rounded-md object-cover border border-gray-200 shadow-sm ml-4"
+                />
+              )}
             </div>
           </div>
+
+
         ))}
       </motion.div>
     </div>
-  )
-}
+  );
+};
+
+export { InfiniteMovingCards };

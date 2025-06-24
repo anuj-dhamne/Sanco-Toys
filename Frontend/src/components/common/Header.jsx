@@ -135,11 +135,11 @@ const Navbar = ({ userData }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  const linkClass = "hover:text-blue-500 transition";
-  const mobileLinkClass = "block w-full text-left hover:text-blue-500 transition";
+  const linkClass = "hover:text-red-500 transition hover:font-bold";
+  const mobileLinkClass = "block w-full text-left hover:font-bold transition";
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-gray-100 text-black shadow-md sticky top-0 z-50">
       <SignedIn>
         {userData?.role === "admin" ? (
           <>
@@ -178,11 +178,11 @@ const Navbar = ({ userData }) => {
               <Link to="/" className="flex items-center">
                 <img src="/sanco_logo.png" alt="Logo" className="h-16 w-auto" />
               </Link>
-              <div className="hidden md:flex items-center space-x-7 text-[17px]">
-                <Link to="/" className={linkClass}>Home</Link>
-                <Link to="/shop" className={linkClass}>Shop</Link>
-                <Link to="/about" className={linkClass}>About</Link>
-                <Link to="/orders" className={linkClass}>My Orders</Link>
+              <div className="hidden md:flex items-center space-x-7 text-[17px] ">
+                <Link to="/" className={linkClass} style={{color:"red"}}>Home</Link>
+                <Link to="/shop" className={linkClass} style={{color:"green"}}>Shop</Link>
+                <Link to="/about" className={linkClass} style={{color:"blue"}}>About</Link>
+                <Link to="/orders" className={linkClass} style={{color:"orange"}}>My Orders</Link>
                 <Link to="/cart" className={`relative ${linkClass}`}>
                   <ShoppingCart className="w-5 h-5" />
                 </Link>
@@ -195,11 +195,11 @@ const Navbar = ({ userData }) => {
               </div>
             </div>
             {isMobileMenuOpen && (
-              <div className="md:hidden px-4 pb-4 space-y-3 text-[16px]">
-                <Link to="/" className={mobileLinkClass}>Home</Link>
-                <Link to="/shop" className={mobileLinkClass}>Shop</Link>
-                <Link to="/about" className={mobileLinkClass}>About</Link>
-                <Link to="/orders" className={mobileLinkClass}>My Orders</Link>
+              <div className="md:hidden px-4 pb-4 space-y-3 text-[16px] hover:font-bold">
+                <Link to="/" className={mobileLinkClass} style={{color:"red"}}>Home</Link>
+                <Link to="/shop" className={mobileLinkClass} style={{color:"green"}}>Shop</Link>
+                <Link to="/about" className={mobileLinkClass} style={{color:"blue"}}>About</Link>
+                <Link to="/orders" className={mobileLinkClass} style={{color:"orange"}}>My Orders</Link>
                 <Link to="/cart" className={`${mobileLinkClass} flex items-center gap-2`}>
                   <ShoppingCart className="w-5 h-5" />
                   <span>Cart</span>
@@ -217,9 +217,9 @@ const Navbar = ({ userData }) => {
             <img src="/sanco_logo.png" alt="Logo" className="h-16 w-auto" />
           </Link>
           <div className="hidden md:flex items-center space-x-7 text-[17px]">
-            <Link to="/" className={linkClass}>Home</Link>
-            <Link to="/shop" className={linkClass}>Shop</Link>
-            <Link to="/about" className={linkClass}>About</Link>
+            <Link to="/" className={linkClass} style={{color:"red"}}>Home</Link>
+            <Link to="/shop" className={linkClass} style={{color:"green"}}>Shop</Link>
+            <Link to="/about" className={linkClass} style={{color:"blue"}}>About</Link>
             <SignInButton mode="modal">
               <button className={linkClass}>
                 <User className="w-5 h-5" />
@@ -234,9 +234,9 @@ const Navbar = ({ userData }) => {
         </div>
         {isMobileMenuOpen && (
           <div className="md:hidden px-4 pb-4 space-y-3 text-[16px]">
-            <Link to="/" className={mobileLinkClass}>Home</Link>
-            <Link to="/shop" className={mobileLinkClass}>Shop</Link>
-            <Link to="/about" className={mobileLinkClass}>About</Link>
+            <Link to="/" className={mobileLinkClass} style={{color:"red"}}>Home</Link>
+            <Link to="/shop" className={mobileLinkClass} style={{color:"green"}}>Shop</Link>
+            <Link to="/about" className={mobileLinkClass} style={{color:"blue"}}>About</Link>
             <SignInButton mode="modal">
               <button className={`${mobileLinkClass} flex items-center gap-2`}>
                 <User className="w-5 h-5" />

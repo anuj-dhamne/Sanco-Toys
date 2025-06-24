@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react' // Make sure lucide-react is installed
+import React, { useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const faqs = [
   {
@@ -27,53 +27,91 @@ const faqs = [
     answer:
       "Yes, many of our toys are suitable for use in educational settings. Teachers and childcare providers appreciate the educational value and durability of our products, which can enhance learning experiences in classrooms, daycare centers, and homeschool environments.",
   },
-]
+];
 
-function FAQItem({ faq, isOpen, onToggle }) {
+// Define a set of tailwind border color classes
+const borderColors = [
+  'border-red-400',
+  'border-yellow-400',
+  'border-green-400',
+  'border-blue-400',
+  'border-purple-400',
+];
+
+function FAQItem({ faq, isOpen, onToggle, borderColorClass }) {
+  const borderFullClass = isOpen ? `border-2 ${borderColorClass}` : 'border-0';
+
   return (
-    <div className="border border-gray-200 rounded-xl mb-4 bg-white shadow-md transition-all duration-300 ease-in-out">
+    <div
+      className={`relative rounded-xl mb-4 bg-white shadow-md transition-all duration-500 ease-in-out border-l-4 ${borderColorClass} ${borderFullClass}`}
+    >
       <button
         onClick={onToggle}
-        className="w-full flex justify-between items-center px-6 py-4 text-left hover:bg-gray-50 focus:outline-none"
+        className="w-full flex justify-between items-center px-6 py-4 text-left"
       >
-        <span className="text-lg font-semibold text-gray-800">{faq.question}</span>
+        <span className="text-lg font-semibold text-gray-800 normal-font">{faq.question}</span>
         <span className="text-gray-500 transition-transform duration-300">
           {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </span>
       </button>
+
       <div
-        className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[500px] py-2 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`px-6 overflow-hidden transition-all duration-500 ease-in-out transform ${isOpen
+            ? 'max-h-[500px] py-2 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 translate-y-5'
+          }`}
       >
-        <p className="text-gray-600 text-base leading-relaxed">
-          {faq.answer}
-        </p>
+        <p className="text-gray-600 text-base leading-relaxed">{faq.answer}</p>
       </div>
     </div>
-  )
+  );
 }
+
+
+
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(null)
+  const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
-    setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
-  }
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12" id="faq">
-      <h2 className="text-3xl font-bold text-center text-gray-900 mb-10">
+    <section className="max-w-6xl mx-auto px-4 py-10 " id="faq" >
+      <h2 className="text-3xl font-bold text-center text-green-500 mb-10 ">
         Frequently Asked Questions
       </h2>
-      {faqs.map((faq, index) => (
-        <FAQItem
-          key={index}
-          faq={faq}
-          isOpen={openIndex === index}
-          onToggle={() => toggleFAQ(index)}
-        />
-      ))}
+
+      <div className="flex flex-col md:flex-row gap-10 items-start ">
+        {/* Image section */}
+        <div className="w-full md:w-1/2 flex justify-center ">
+          <div className="animate-fade-in-up duration-1000 ease-out">
+            <img
+              src="/FAQ.jpg"
+              alt="FAQ Illustration"
+              className="max-w-full h-110 rounded-lg shadow-lg hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
+
+
+        {/* FAQ list */}
+        <div className="w-full md:w-1/2 normal-font">
+        
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              faq={faq}
+              isOpen={openIndex === index}
+              onToggle={() => toggleFAQ(index)}
+              borderColorClass={borderColors[index % borderColors.length]}
+            />
+          ))}
+          
+        </div>
+      </div>
     </section>
-  )
+  );
 }
+
