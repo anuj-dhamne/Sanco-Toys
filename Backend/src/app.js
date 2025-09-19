@@ -8,7 +8,7 @@ import { sendInvoiceEmail } from "./utils/sendEmail.js"
 
 app.use(cors({
     // origin:process.env.CORS_ORIGIN,
-    origin:"http://localhost:5173" ,
+    origin:"http://localhost:5174" ,
     credentials:true
 }))
 app.use(express.json())

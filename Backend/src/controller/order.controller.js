@@ -18,7 +18,7 @@ const createOrder =asyncHandler(async(req,res)=>{
     if(!cart || cart.products.length===0){
         return res.status(400).json(new ApiResponse(400,null,"The cart is empty . Add items for order !"));
     }
-
+        
     let totalAmount = 0;
     const productsWithDetails = await Promise.all(
         cart.products.map(async (item) => {

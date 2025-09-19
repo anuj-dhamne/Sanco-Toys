@@ -7,6 +7,7 @@ import Cart from "../model/cart.model.js"
 import Product from "../model/product.model.js";
 import User from "../model/user.model.js"
 import { generateInvoice } from "../utils/invoiceGeneration.js";
+import { sendInvoiceEmail } from "../utils/sendEmail.js";
 
 export const createOrder = asyncHandler(async (req, res) => {
   const { amount ,shippingAddress} = req.body; // amount in rupees
@@ -130,6 +131,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       cart.products = [];
       await cart.save();
 
+      sendInvoiceEmail(user, invoiceRes);
       return res.status(200).json({
         success: true,
         message: "Payment verified successfully",
