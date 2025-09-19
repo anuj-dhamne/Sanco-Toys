@@ -2,7 +2,7 @@ import { syncUser } from "../middlewares/syncuser.middleware.js"
 import { checkAdmin } from "../middlewares/checkAdmin.middleware.js"
 import { Router } from "express"
 import {ClerkExpressRequireAuth} from "@clerk/clerk-sdk-node" 
-import { cancelOrder, createOrder, getAllOrders, getOrderById, getUserOrders, updateOrderStatus } from "../controller/order.controller.js"
+import { cancelOrder, createOrder, getAllOrders, getOrderById, getUserOrders, updateOrderStatus,testOrder } from "../controller/order.controller.js"
 
 const orderRouter=Router();
 
@@ -19,4 +19,7 @@ orderRouter.delete("/cancel-order/:id",ClerkExpressRequireAuth(),syncUser,cancel
 
 // admin
 orderRouter.get("/get-all-orders",ClerkExpressRequireAuth(),syncUser,checkAdmin,getAllOrders);
+
+// test api route
+orderRouter.post("/test-pdf",testOrder);
 export default orderRouter;

@@ -49,6 +49,15 @@ const generateInvoice = async (order) => {
     
 
     const result = await easyinvoice.createInvoice(data);
+    // return result.pdf;
+    // const result = await easyinvoice.createInvoice(data);
+
+    const reportsDir = 'reports';
+    if (!fs.existsSync(reportsDir)) fs.mkdirSync(reportsDir);
+
+    const outputPath = path.join(reportsDir, `Monthly_Report_${user._id}_${Date.now()}.pdf`);
+    fs.writeFileSync(outputPath, result.pdf, 'base64');
+
     return result.pdf;
 };
 
