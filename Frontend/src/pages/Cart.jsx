@@ -37,7 +37,7 @@ const CartItemList = () => {
       console.log("product ID :",productId);
       const token = await getToken();
       const res = await axios.patch(
-        `http://localhost:5000/api/v1/cart/update-cart-item/${productId}`,
+        `${import.meta.env.VITE_SERVER}/cart/update-cart-item/${productId}`,
         { quantity: newQuantity },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -56,7 +56,7 @@ const CartItemList = () => {
       const token = await getToken();
       console.log("toten : ",token);
       const res = await axios.post(
-        `http://localhost:5000/api/v1/cart/remove-from-cart/${productId}`,{},
+        `${import.meta.env.VITE_SERVER}/cart/remove-from-cart/${productId}`,{},
         {
           headers: { Authorization: `Bearer ${token}` },
         }

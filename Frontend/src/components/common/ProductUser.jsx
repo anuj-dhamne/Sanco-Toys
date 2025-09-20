@@ -42,7 +42,7 @@ const ProductUser = ({ product }) => {
     }
     const token = await getToken();
     try {
-      const res = await axios.post(`http://localhost:5000/api/v1/cart/add-to-cart/${product._id}`, { quantity },
+      const res = await axios.post(`${import.meta.env.VITE_SERVER}/cart/add-to-cart/${product._id}`, { quantity },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const ProductUser = ({ product }) => {
     }
     const token = await getToken();
     try {
-      const res = await axios.post(`http://localhost:5000/api/v1/cart/add-to-cart/${product._id}`, { quantity },
+      const res = await axios.post(`${import.meta.env.VITE_SERVER}/cart/add-to-cart/${product._id}`, { quantity },
         {
           headers: {
             Authorization: `Bearer ${token}`,
