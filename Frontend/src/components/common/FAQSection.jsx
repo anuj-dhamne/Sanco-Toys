@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const faqs = [
@@ -78,9 +79,19 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10 " id="faq" >
-      <h2 className="text-3xl font-bold text-center text-green-500 mb-10 ">
-        Frequently Asked Questions
+    <section className="max-w-7xl mx-auto px-4 py-10  w-full" id="faq" >
+      <h2 className="text-3xl font-bold text-center text-blue-400 mb-10 bg-blue-100 rounded-md ">
+        <TypeAnimation
+        sequence={[
+          'Frequently Asked Questions', // text
+          2000, // wait 2 sec
+          
+        ]}
+        wrapper="span"
+        speed={20}
+        repeat={Infinity}
+        cursor={false}
+      />
       </h2>
 
       <div className="flex flex-col md:flex-row gap-10 items-start ">

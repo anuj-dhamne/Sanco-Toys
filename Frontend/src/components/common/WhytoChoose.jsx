@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaCheckCircle, FaLeaf, FaChild, FaComments, FaShieldAlt } from 'react-icons/fa';
+import { TypeAnimation } from 'react-type-animation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ChooseImage from '/Chhose.jpg'; // adjust path
@@ -9,26 +10,31 @@ const features = [
     icon: <FaCheckCircle className="text-green-600 text-2xl" />,
     title: 'Premium Quality with Virgin Food Grade Material',
     description: 'Crafted with top-grade, virgin food-safe materials ensuring durability and safety.',
+    
   },
   {
     icon: <FaLeaf className="text-green-500 text-2xl" />,
     title: 'Ecofriendly Materials & Recyclable Products',
     description: 'Made from eco-friendly materials, our products are fully recyclable, promoting sustainability.',
+    
   },
   {
     icon: <FaChild className="text-yellow-500 text-2xl" />,
     title: 'Age-appropriate Designs',
     description: 'Thoughtfully designed to meet the developmental needs of kids, tailored to their age group.',
+    
   },
   {
     icon: <FaComments className="text-blue-500 text-2xl" />,
     title: 'Customer Focus & Feedback-driven Improvements',
     description: 'We prioritize customer feedback to continuously refine and improve our products.',
+    
   },
   {
     icon: <FaShieldAlt className="text-red-500 text-2xl" />,
-    title: 'Rigorous Testing',
+    title: 'Rigorous Testing' ,
     description: 'Each product undergoes thorough testing to meet the highest safety and quality standards.',
+    
   },
 ];
 
@@ -41,13 +47,23 @@ const WhyChooseSanco = () => {
   }, []);
 
   return (
-  <div className="bg-white p-8 rounded-lg max-w-6xl mx-auto my-10">
+  <div className="max-w-7xl bg-white p-8 rounded-lg mx-auto ">
     {/* Title at the top center */}
     <h2
-      className="text-3xl font-bold text-purple-600 mb-10 text-center"
+      className="text-3xl font-bold text-purple-600 mb-10 text-center rounded-md bg-purple-100"
       data-aos="fade-down"
     >
-      Why To Choose Sanco :
+      <TypeAnimation
+              sequence={[
+                'Why to choose Sanco ?', // text
+                2000, // wait 2 sec
+                
+              ]}
+              wrapper="span"
+              speed={20}
+              repeat={Infinity}
+              cursor={false}
+            />
     </h2>
 
     <div className="flex flex-col md:flex-row items-center">

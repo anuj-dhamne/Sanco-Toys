@@ -19,7 +19,7 @@ const AnimatedSection = ({ children }) => {
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        visible ? 'animate-flip-in' : 'opacity-0 translate-y-10'
+        visible ? '' : 'opacity-0 translate-y-10'
       }`}
     >
       {children}

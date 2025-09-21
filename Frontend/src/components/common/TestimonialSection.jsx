@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TypeAnimation } from 'react-type-animation';
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards.jsx'; // adjust the path if needed
 
 const testimonials = [
@@ -41,11 +42,21 @@ const TestimonialSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full px-4 py-12 bg-white">
-      <div className="w-[96%] mx-auto">
+    <section className=" px-4 py-12 bg-white">
+      <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl font-bold text-center text-orange-900 mb-10">
-          What Our Happy Customers Say
+        <h2 className="text-3xl font-bold text-center text-orange-900 mb-10 bg-orange-100 rounded-md ">
+          <TypeAnimation
+        sequence={[
+          'What our Happy Customers Say', // text
+          2000, // wait 2 sec
+          
+        ]}
+        wrapper="span"
+        speed={20}
+        repeat={Infinity}
+        cursor={false}
+      />
         </h2>
 
         {/* Testimonial Carousel */}

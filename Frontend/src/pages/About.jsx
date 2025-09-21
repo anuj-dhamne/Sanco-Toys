@@ -28,9 +28,8 @@ const AnimatedSection = ({ children }) => {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? 'animate-flip-in' : 'opacity-0 translate-y-10'
-      }`}
+      className={`transition-all duration-700 ease-out ${visible ? 'animate-flip-out' : 'opacity-0 translate-y-10'
+        }`}
     >
       {children}
     </div>
@@ -116,52 +115,51 @@ const About = () => {
           const color = colorMap[sec.color];
           return (
             <AnimatedSection key={idx}>
-  <div
-    className={`border-t-4 ${color.border} ${color.bg} text-lg leading-8 p-6 mb-10 rounded-xl shadow-md hover:shadow-xl`}
-  >
-    {/* Title ABOVE the whole card */}
-    <h2
-      className={`text-2xl md:text-3xl font-semibold mb-6 flex items-center justify-center gap-2 text-center ${color.text}`}
-    >
-      <span>{sec.icon}</span>
-      <span>{sec.title}</span>
-    </h2>
-
-    {/* Content Section */}
-    <div
-      className={`flex flex-col md:flex-row ${
-        sec.reverse ? 'md:flex-row-reverse' : ''
-      } items-center`}
-    >
-      {/* Image */}
-      <div className="md:w-1/2 w-full px-4 flex justify-center items-center">
-        <img
-          src={sec.img}
-          alt={sec.title}
-          className="w-full h-full max-w-[500px] max-h-[400px] my-0 rounded-3xl object-cover transition-transform duration-500 hover:scale-105"
-        />
-      </div>
-
-      {/* Text */}
-      <div className="md:w-1/2 w-full p-4">
-        <p className={`text-xl ${color.text}`}>{sec.text}</p>
-        {sec.list && (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-green-700">
-            {sec.list.map((item, i) => (
-              <li
-                key={i}
-                className="flex items-center space-x-3 bg-green-100 p-3 rounded-lg shadow-sm hover:bg-green-200 transition"
+              <div
+                className={`border-t-4 ${color.border} ${color.bg} text-lg leading-8 p-6 mb-10 rounded-xl shadow-md hover:shadow-xl`}
               >
-                <span>{item.icon}</span>
-                <span>{item.label}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  </div>
-</AnimatedSection>
+                {/* Title ABOVE the whole card */}
+                <h2
+                  className={`text-2xl md:text-3xl font-semibold mb-6 flex items-center justify-center gap-2 text-center ${color.text}`}
+                >
+                  <span>{sec.icon}</span>
+                  <span>{sec.title}</span>
+                </h2>
+
+                {/* Content Section */}
+                <div
+                  className={`flex flex-col md:flex-row ${sec.reverse ? 'md:flex-row-reverse' : ''
+                    } items-center`}
+                >
+                  {/* Image */}
+                  <div className="md:w-1/2 w-full px-4 flex justify-center items-center">
+                    <img
+                      src={sec.img}
+                      alt={sec.title}
+                      className="w-full h-full max-w-[500px] max-h-[400px] my-0 rounded-3xl object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Text */}
+                  <div className="md:w-1/2 w-full p-4">
+                    <p className={`text-xl ${color.text}`}>{sec.text}</p>
+                    {sec.list && (
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-green-700">
+                        {sec.list.map((item, i) => (
+                          <li
+                            key={i}
+                            className="flex items-center space-x-3 bg-green-100 p-3 rounded-lg shadow-sm hover:bg-green-200 transition"
+                          >
+                            <span>{item.icon}</span>
+                            <span>{item.label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
 
           );
         })}
