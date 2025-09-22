@@ -8,7 +8,10 @@ import { sendInvoiceEmail } from "./utils/sendEmail.js"
 
 app.use(cors({
     // origin:process.env.CORS_ORIGIN,
-    origin:"https://www.sancotoys.shop" ,
+    origin: [
+    "https://www.sancotoys.shop",
+    "https://sancotoys.shop"
+  ],
     credentials:true
 }))
 app.use(express.json())
