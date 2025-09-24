@@ -105,17 +105,29 @@ const defaultCards = [
     iconColor: 'text-green-500',
     isContact: true,
   },
+  {
+  icon: FaInfoCircle,
+  title: 'Company Information',
+  content:
+    'Address: Plot No.A, 106 - 107, 1st Floor, H-Block, MIDC, Pimpri, Pune, Maharashtra, India - 411018\n Email: info@sancotoys.com \n Phone: +91-8446090922',
+  borderColor: 'border-pink-400',
+  bgColor: 'bg-white',
+  titleColor: 'text-pink-700',
+  textColor: 'text-pink-600',
+  iconColor: 'text-pink-500',
+}
+
 ];
 
 const TnC = ({ cards = defaultCards }) => {
   return (
     <div className="min-h-screen bg-white px-6 py-16 animate-fade-in-up">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold text-red-500 mb-10 text-center flex items-center justify-center gap-4 animate-fade-in-up delay-[200ms]">
-          <FaFileContract className="text-red-500" /> Terms & Conditions
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-5xl font-bold text-black mb-10 text-center flex items-center justify-center gap-4 animate-fade-in-up delay-[200ms]">
+          <FaFileContract className="text-black" /> Terms & Conditions
         </h1>
 
-        <p className="text-lg text-red-500 leading-8 mb-10 text-center animate-fade-in-up delay-[300ms]">
+        <p className="text-lg text-black leading-8 mb-10 text-center animate-fade-in-up delay-[300ms]">
           By using <span className="font-semibold text-primary">SancoToys</span> services, you agree to the following terms and conditions.
         </p>
 
@@ -131,7 +143,7 @@ const TnC = ({ cards = defaultCards }) => {
                   <Icon className={`${card.iconColor} w-5 h-5`} />
                   <h2 className={`text-2xl font-semibold ${card.titleColor}`}>{card.title}</h2>
                 </div>
-                <p className={`text-base leading-relaxed ${card.textColor}`}>
+                <p className={`whitespace-pre-line leading-relaxed ${card.textColor}`}>
                   {card.isContact ? (
                     <>
                       If you have any questions regarding these terms, please contact us at{' '}

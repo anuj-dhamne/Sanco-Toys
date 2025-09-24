@@ -97,6 +97,17 @@ const defaultSections = [
     textColor: 'text-orange-600',
     iconColor: 'text-orange-500',
   },
+  {
+  icon: ShieldCheck,
+  heading: 'Contact Us',
+  content:
+    'If you have any questions about this Privacy Policy or our practices, please contact us at: \n Plot No.A, 106 - 107, 1st Floor, H-Block, MIDC, Pimpri, Pune, Maharashtra, India - 411018 \n Email: info@sancotoys.com \n Phone: +91-8446090922',
+  borderColor: 'border-pink-500',
+  headingColor: 'text-pink-600',
+  textColor: 'text-pink-600',
+  iconColor: 'text-pink-500',
+}
+
 ];
 
 const PrivacyPolicy = ({
@@ -106,12 +117,12 @@ const PrivacyPolicy = ({
 }) => {
   return (
     <div className="min-h-screen bg-white px-6 py-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Title */}
         
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <TitleIcon className="text-red-500 w-10 h-10" />
-            <h1 className="text-5xl font-bold text-red-500">{title}</h1>
+          <div className="flex items-center justify-center gap-4 mb-12 ">
+            <TitleIcon className="text-black w-10 h-10" />
+            <h1 className="text-5xl font-bold text-black">{title}</h1>
           </div>
         
 
@@ -130,7 +141,7 @@ const PrivacyPolicy = ({
                       {section.heading}
                     </h2>
                   </div>
-                  <p className={`leading-relaxed ${section.textColor}`}>{section.content}</p>
+                  <p className={`leading-relaxed whitespace-pre-line ${section.textColor}`}>{section.content}</p>
                 </div>
               
             );
