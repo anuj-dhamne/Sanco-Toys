@@ -29,22 +29,25 @@ const Footer = () => {
             <h4 className="font-semibold text-black">Company</h4>
             <a href="/about" className="text-yellow-500 hover:font-bold block">About Us</a>
             <a href="/contact" className="text-red-500 hover:font-bold block">Contact Us</a>
-            <a href="/contact" className="text-green-500 hover:font-bold block">Careers</a>
+            <a href="/careers" className="text-green-500 hover:font-bold block">Careers</a>
             <a href="/certification" className="text-blue-500 hover:font-bold block">Certifications</a>
           </div>
 
           <div className="space-y-2 ">
-            <h4 className="font-semibold text-black">Support</h4>
-            <a href="/customer-care" className="text-red-500 hover:font-bold block">Customer Care</a>
-            <a href="#faq" className="text-purple-500 hover:font-bold block">FAQs</a>
+            <h4 className="font-semibold text-black">Legal</h4>
+            <a href="/privacy-policies" className="text-yellow-500 hover:font-bold block">Privacy Policy</a>
+            <a href="/terms&conditions" className="text-blue-500 hover:font-bold block">Terms & Conditions</a>
+            <a href="/shipping-policy" className="text-purple-500 hover:font-bold block">Shipping Policy</a>
+            <a href="/cancellation-refunds" className="text-red-500 hover:font-bold block">Cancellation & Refunds</a>
             {/* <a href="/" className="hover:text-blue-500 block">Shipping</a>
             <a href="/" className="hover:text-blue-500 block">Returns</a> */}
           </div>
 
           <div className="space-y-2">
-            <h4 className="font-semibold text-black">Legal</h4>
-            <a href="/privacy-policies" className="text-yellow-500 hover:font-bold block">Privacy Policy</a>
-            <a href="/terms&conditions" className="text-blue-500 hover:font-bold block">Terms & Conditions</a>
+            <h4 className="font-semibold text-black">Support</h4>
+            
+            <a href="/customer-care" className="text-red-500 hover:font-bold block">Customer Care</a>
+            <a href="#faq" className="text-purple-500 hover:font-bold block">FAQs</a>
             <div className="flex space-x-4 pt-2 ">
               <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                 <Instagram className="w-5 h-5 hover:text-pink-500 hover:w-6 h-6" />
