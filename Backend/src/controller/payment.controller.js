@@ -42,9 +42,9 @@ export const verifyRazorpaySignature = async(req, res) => {
     const userId = req.auth?.userId;
     const user = await User.findOne({ clerkId: userId });
     // console.log("user : ",user);
-    if (!user) {
-       return res.status(401).json(new ApiResponse(401,"null","Unauthorised req "));
-    }
+    // if (!user) {
+    //    return res.status(401).json(new ApiResponse(401,"null","Unauthorised req "));
+    // }
     console.log("Shipping address : ",shippingAddress);
     let cart =await Cart.findOne({user:user._id});
     if(!cart || cart.products.length===0){
