@@ -65,7 +65,7 @@ const OrderSummaryPage = () => {
             amount:data.data.amount // ✅ Optional: pass address for saving
           }
         );
-
+        console.log("verification Response : ",verificationResponse.status);
         if (verificationResponse.status === 200) {
           toast.success("Payment Done!");
           fetchCart();
