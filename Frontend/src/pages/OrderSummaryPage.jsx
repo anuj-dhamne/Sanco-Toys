@@ -4,8 +4,10 @@ import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 import { useUserStore } from "../context/useUserStore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"
 
 const OrderSummaryPage = () => {
+  const navigate = useNavigate();
   const [cart, setCart] = useState(null);
   const [address, setAddress] = useState(""); // ✅ Shipping address state
   const { getToken } = useAuth();
@@ -67,6 +69,7 @@ const OrderSummaryPage = () => {
         if (verificationResponse.status === 200) {
           toast.success("Payment Done!");
           fetchCart();
+          navigate("/orders");
         } else {
           toast.error("Payment Failed!");
         }
@@ -101,7 +104,8 @@ const OrderSummaryPage = () => {
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
-  const shipping = 40;
+  // const shipping = 40;
+  const shipping = 0;
   const totalAmount = subtotal + shipping;
 
   return (
