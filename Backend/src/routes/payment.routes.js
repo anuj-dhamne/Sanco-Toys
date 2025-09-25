@@ -8,6 +8,6 @@ const paymentRouter=Router();
 
 paymentRouter.post("/create-order",ClerkExpressRequireAuth(),syncUser,createOrder);
 
-paymentRouter.post("/verify",verifyRazorpaySignature);
+paymentRouter.post("/verify",ClerkExpressRequireAuth(),syncUser,verifyRazorpaySignature);
 
 export default paymentRouter;
