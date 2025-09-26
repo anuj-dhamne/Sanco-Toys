@@ -81,7 +81,7 @@ const OrderSummaryPage = () => {
             if (verificationResponse.status === 200) {
               toast.success("Payment Done!");
               fetchCart();
-              navigate("/my-orders"); // ✅ Redirect
+              navigate("/orders"); // ✅ Redirect
             } else {
               toast.error("Payment Failed!");
             }
