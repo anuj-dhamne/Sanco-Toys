@@ -48,7 +48,7 @@ const OrderSummaryPage = () => {
       }
 
       const token = await getToken();
-      
+      console.log("Token in making order payment ",token);
       const { data } = await axios.post(
         `${import.meta.env.VITE_SERVER}/payment/create-order`,
         { amount: totalAmount, shippingAddress: address },
@@ -63,8 +63,9 @@ const OrderSummaryPage = () => {
         description: "Test Transaction",
         order_id: data.data.id,
         handler: async function (response) {
+          const token = await getToken();
+          console.log("Token in verify payment ",token);
           try {
-            const token = await getToken();
             const verificationResponse = await axios.post(
               `${import.meta.env.VITE_SERVER}/payment/verify`,
               {
