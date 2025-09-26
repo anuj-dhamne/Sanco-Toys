@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
 
 const faqs = [
   {
@@ -30,7 +31,6 @@ const faqs = [
   },
 ];
 
-// Define a set of tailwind border color classes
 const borderColors = [
   'border-red-400',
   'border-yellow-400',
@@ -50,17 +50,20 @@ function FAQItem({ faq, isOpen, onToggle, borderColorClass }) {
         onClick={onToggle}
         className="w-full flex justify-between items-center px-6 py-4 text-left"
       >
-        <span className="text-lg font-semibold text-gray-800 normal-font">{faq.question}</span>
+        <span className="text-lg font-semibold text-gray-800 normal-font">
+          {faq.question}
+        </span>
         <span className="text-gray-500 transition-transform duration-300">
           {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </span>
       </button>
 
       <div
-        className={`px-6 overflow-hidden transition-all duration-500 ease-in-out transform ${isOpen
+        className={`px-6 overflow-hidden transition-all duration-500 ease-in-out transform ${
+          isOpen
             ? 'max-h-[500px] py-2 opacity-100 translate-y-0'
             : 'max-h-0 opacity-0 translate-y-5'
-          }`}
+        }`}
       >
         <p className="text-gray-600 text-base leading-relaxed">{faq.answer}</p>
       </div>
@@ -68,35 +71,39 @@ function FAQItem({ faq, isOpen, onToggle, borderColorClass }) {
   );
 }
 
-
-
-
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
   const toggleFAQ = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10  w-full" id="faq" >
-      <h2 className="text-3xl font-bold text-center text-blue-400 mb-10 bg-blue-100 rounded-md ">
-        <TypeAnimation
-        sequence={[
-          'Frequently Asked Questions', // text
-          2000, // wait 2 sec
-          
-        ]}
-        wrapper="span"
-        speed={20}
-        repeat={Infinity}
-        cursor={false}
-      />
+    <section
+      className="max-w-7xl mx-auto px-4 py-10 w-full"
+      id="faq"
+    >
+      <h2
+        ref={ref}
+        className="text-3xl font-bold text-center text-blue-400 mb-10 bg-blue-100 rounded-md"
+      >
+        {inView ? (
+          <TypeAnimation
+            sequence={['Frequently Asked Questions', 2000]}
+            wrapper="span"
+            speed={40}
+            repeat={0}
+            cursor={false}
+          />
+        ) : (
+          <span>Frequently Asked Questions</span>
+        )}
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-10 items-start ">
-        {/* Image section */}
-        <div className="w-full md:w-1/2 flex justify-center ">
+      <div className="flex flex-col md:flex-row gap-10 items-start">
+        {/* Image */}
+        <div className="w-full md:w-1/2 flex justify-center">
           <div className="animate-fade-in-up duration-1000 ease-out">
             <img
               src="/FAQ.jpg"
@@ -106,10 +113,8 @@ export default function FAQSection() {
           </div>
         </div>
 
-
         {/* FAQ list */}
         <div className="w-full md:w-1/2 normal-font">
-        
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}
@@ -119,10 +124,8 @@ export default function FAQSection() {
               borderColorClass={borderColors[index % borderColors.length]}
             />
           ))}
-          
         </div>
       </div>
     </section>
   );
 }
-

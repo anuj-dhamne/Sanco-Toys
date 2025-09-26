@@ -13,13 +13,15 @@ const MyOrders = () => {
     const fetchOrders = async () => {
       try {
         const token = await getToken();
-        const res = await axios.get(`${import.meta.env.VITE_SERVER}/order/get-user-orders`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        // console.log("response for my orders:", res.data);
+        const res = await axios.get(
+          `${import.meta.env.VITE_SERVER}/order/get-user-orders`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setOrders(res.data.data);
       } catch (err) {
-        // console.error("Failed to fetch orders:", err);
+        console.error("Failed to fetch orders:", err);
       }
     };
 
@@ -46,6 +48,22 @@ const MyOrders = () => {
     document.body.removeChild(downloadLink);
   };
 
+  // ✅ Helper to format order ID (last 4 digits only)
+  const getShortOrderId = (id) => {
+    return id ? id.slice(-4) : "";
+  };
+
+  // ✅ Helper to format date in Indian format
+  const formatIndianDate = (dateString) => {
+    return new Date(dateString).toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-6">
       <h2 className="text-3xl font-bold mb-6 text-center">My Orders</h2>
@@ -61,10 +79,10 @@ const MyOrders = () => {
             <div className="flex flex-col sm:flex-row justify-between mb-4 gap-3">
               <div>
                 <p className="text-lg font-semibold text-gray-800">
-                  Order ID: {order._id}
+                  Order ID: #{getShortOrderId(order._id)}
                 </p>
                 <p className="text-sm text-gray-600">
-                  Ordered on: {new Date(order.createdAt).toLocaleString()}
+                  Ordered on: {formatIndianDate(order.createdAt)}
                 </p>
               </div>
               <button
@@ -128,7 +146,9 @@ const MyOrders = () => {
             >
               &times;
             </button>
-            <h3 className="text-xl font-semibold mb-4 text-center">Invoice Preview</h3>
+            <h3 className="text-xl font-semibold mb-4 text-center">
+              Invoice Preview
+            </h3>
             <iframe
               src={`data:application/pdf;base64,${invoicePreview}`}
               title="Invoice Preview"

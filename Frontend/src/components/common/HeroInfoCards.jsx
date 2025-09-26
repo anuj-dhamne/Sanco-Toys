@@ -35,15 +35,22 @@ const heroData = [
 const HeroCard = ({ title, description, image, background, reverse, titleGradient }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [animated, setAnimated] = useState(false); // ✅ new state to track if animation already ran
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting && !animated) {
+          setVisible(true);
+          setAnimated(true); // ✅ lock animation so it runs only once
+          observer.disconnect(); // ✅ stop observing after first trigger
+        }
+      },
       { threshold: 0.2 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [animated]);
 
   const gradientDirection = reverse ? 'to left' : 'to right';
   const animationClass = visible

@@ -4,12 +4,12 @@ import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 import { useUserStore } from "../context/useUserStore";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigate
+import { useNavigate } from "react-router-dom";
 
 const OrderSummaryPage = () => {
   const [cart, setCart] = useState(null);
-  const [address, setAddress] = useState(""); 
-  const [loading, setLoading] = useState(false); // ✅ Loader state
+  const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { getToken } = useAuth();
   const user = useUserStore().userData;
@@ -22,9 +22,10 @@ const OrderSummaryPage = () => {
   const fetchCart = async () => {
     try {
       const token = await getToken();
-      const res = await axios.get(`${import.meta.env.VITE_SERVER}/cart/get-cart`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_SERVER}/cart/get-cart`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       setCart(res.data.data);
     } catch (err) {
       console.error("Failed to fetch cart:", err);
@@ -33,22 +34,21 @@ const OrderSummaryPage = () => {
 
   const handlePayment = async () => {
     if (!address.trim()) {
-      toast.error("Please enter your shipping address");
+      toast.error("Please enter your shipping address"); // ✅ only toast
       return;
     }
 
     try {
-      setLoading(true); // ✅ Start loader
+      setLoading(true);
 
       const res = await loadRazorpayScript();
       if (!res) {
-        alert("Razorpay SDK failed to load. Are you online?");
+        toast.error("Razorpay SDK failed to load. Are you online?");
         setLoading(false);
         return;
       }
 
       const token = await getToken();
-      console.log("Token in making order payment ",token);
       const { data } = await axios.post(
         `${import.meta.env.VITE_SERVER}/payment/create-order`,
         { amount: totalAmount, shippingAddress: address },
@@ -64,7 +64,6 @@ const OrderSummaryPage = () => {
         order_id: data.data.id,
         handler: async function (response) {
           const token = await getToken();
-          console.log("Token in verify payment ",token);
           try {
             const verificationResponse = await axios.post(
               `${import.meta.env.VITE_SERVER}/payment/verify`,
@@ -77,11 +76,11 @@ const OrderSummaryPage = () => {
               },
               { headers: { Authorization: `Bearer ${token}` } }
             );
-            console.log(" verification response : ",verificationResponse.status);
+
             if (verificationResponse.status === 200) {
               toast.success("Payment Done!");
               fetchCart();
-              navigate("/orders"); // ✅ Redirect
+              navigate("/orders");
             } else {
               toast.error("Payment Failed!");
             }
@@ -97,12 +96,12 @@ const OrderSummaryPage = () => {
         },
         theme: { color: "#000000" },
         modal: {
-          ondismiss: () => setLoading(false), // ✅ stop loader if closed
+          ondismiss: () => setLoading(false),
         },
       };
 
       const rzp1 = new window.Razorpay(options);
-      setLoading(false); // ✅ stop loader once popup opens
+      setLoading(false);
       rzp1.open();
     } catch (error) {
       console.error("Error during payment:", error);
@@ -133,6 +132,7 @@ const OrderSummaryPage = () => {
   return (
     <div className="max-w-4xl mx-auto mt-10">
       <OrderSummary cart={cart} />
+
       {/* ✅ Shipping Address Input */}
       <div className="mt-6">
         <label
@@ -150,6 +150,7 @@ const OrderSummaryPage = () => {
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
         />
       </div>
+
       {/* ✅ Payment Button / Loader */}
       <div className="mt-6 flex justify-end">
         <button

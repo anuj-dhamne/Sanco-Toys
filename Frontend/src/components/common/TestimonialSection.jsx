@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards.jsx'; // adjust the path if needed
@@ -32,7 +32,7 @@ const testimonials = [
     name: "Jui More",
     role: "Toy Collector",
     quote:
-          "Your toy trucks are a valuable educational tool for young children. They help develop fine motor skills, spatial awareness, and imaginative play. We appreciate the attention to detail in the design, which makes them engaging for kids of all ages."                ,
+      "Your toy trucks are a valuable educational tool for young children. They help develop fine motor skills, spatial awareness, and imaginative play. We appreciate the attention to detail in the design, which makes them engaging for kids of all ages.",
     borderColor: "border-purple-500",
     image:'/jui.jpg'
   },
@@ -40,37 +40,55 @@ const testimonials = [
 
 const TestimonialSection = () => {
   const navigate = useNavigate();
+  const headingRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+          observer.unobserve(entry.target); // Run only once
+        }
+      },
+      { threshold: 0.5 } // triggers when 50% visible
+    );
+
+    if (headingRef.current) {
+      observer.observe(headingRef.current);
+    }
+
+    return () => {
+      if (headingRef.current) observer.unobserve(headingRef.current);
+    };
+  }, []);
 
   return (
-    <section className=" px-4 py-12 bg-white">
+    <section className="px-4 py-12 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl font-bold text-center text-orange-900 mb-10 bg-orange-100 rounded-md ">
-          <TypeAnimation
-        sequence={[
-          'What our Happy Customers Say', // text
-          2000, // wait 2 sec
-          
-        ]}
-        wrapper="span"
-        speed={20}
-        repeat={Infinity}
-        cursor={false}
-      />
+        <h2
+          ref={headingRef}
+          className="text-3xl font-bold text-center text-orange-900 mb-10 bg-orange-100 rounded-md"
+        >
+          {animate ? (
+            <TypeAnimation
+              sequence={[
+                'What our Happy Customers Say', // text
+                2000, // pause
+              ]}
+              wrapper="span"
+              speed={20}
+              repeat={0} // play only once
+              cursor={false}
+            />
+          ) : (
+            <span className="opacity-0">What our Happy Customers Say</span> // placeholder to keep space
+          )}
         </h2>
 
         {/* Testimonial Carousel */}
         <InfiniteMovingCards items={testimonials} direction="left" speed="normal" />
-
-        {/* Feedback Button */}
-        {/* <div className="flex justify-end mt-8">
-          <button
-            className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 transition-all"
-            onClick={() => navigate('/feedback-form')}
-          >
-            Give Your Feedback
-          </button>
-        </div> */}
       </div>
     </section>
   );
