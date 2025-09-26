@@ -48,6 +48,7 @@ const OrderSummaryPage = () => {
       }
 
       const token = await getToken();
+      
       const { data } = await axios.post(
         `${import.meta.env.VITE_SERVER}/payment/create-order`,
         { amount: totalAmount, shippingAddress: address },
@@ -63,6 +64,7 @@ const OrderSummaryPage = () => {
         order_id: data.data.id,
         handler: async function (response) {
           try {
+            const token = await getToken();
             const verificationResponse = await axios.post(
               `${import.meta.env.VITE_SERVER}/payment/verify`,
               {
