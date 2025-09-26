@@ -69,7 +69,7 @@ export const verifyRazorpaySignature = async(req, res) => {
 
     // Create expected signature by hashing order_id + "|" + payment_id with your Razorpay Secret
     const generated_signature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_SECRET)
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(`${razorpay_order_id}|${razorpay_payment_id}`)
       .digest("hex");
 
