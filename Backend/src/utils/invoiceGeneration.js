@@ -27,6 +27,10 @@ const generateInvoice = async (order) => {
         price: shippingCharge
     });
 
+    const today = new Date();
+    const formattedDate = `${today.getDate().toString().padStart(2, "0")}/${(today.getMonth() + 1).toString().padStart(2, "0")
+        }/${today.getFullYear()}`;
+
     const data = {
         documentTitle: "Invoice",
         currency: "INR",
@@ -43,7 +47,7 @@ const generateInvoice = async (order) => {
             country: "India"
         },
         invoiceNumber: order._id.toString(),
-        invoiceDate: new Date().toISOString().split("T")[0],
+        invoiceDate: formattedDate,
         products: detailedProducts,
         bottomNotice: `Invoice No: ${order._id} | Date: ${new Date().toISOString().split("T")[0]}`
     };
