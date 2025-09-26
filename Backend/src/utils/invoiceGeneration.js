@@ -1,6 +1,7 @@
 import easyinvoice from "easyinvoice";
-import fs from "fs/promises";
-import Product from "../model/product.model.js";  
+import fs from "fs";
+import path from "path";
+import Product from "../model/product.model.js";
 import User from "../model/user.model.js";
 
 const generateInvoice = async (order) => {
@@ -46,17 +47,24 @@ const generateInvoice = async (order) => {
         products: detailedProducts,
         bottomNotice: `Invoice No: ${order._id} | Date: ${new Date().toISOString().split("T")[0]}`
     };
-    
+
 
     const result = await easyinvoice.createInvoice(data);
     // return result.pdf;
     // const result = await easyinvoice.createInvoice(data);
 
-    const reportsDir = 'reports';
-    if (!fs.existsSync(reportsDir)) fs.mkdirSync(reportsDir);
+    const reportsDir = "reports";
 
-    const outputPath = path.join(reportsDir, `Monthly_Report_${user._id}_${Date.now()}.pdf`);
-    fs.writeFileSync(outputPath, result.pdf, 'base64');
+    if (!fs.existsSync(reportsDir)) {
+        fs.mkdirSync(reportsDir, { recursive: true });
+    }
+
+    const outputPath = path.join(
+        reportsDir,
+        `Monthly_Report_${user._id}_${Date.now()}.pdf`
+    );
+
+    fs.writeFileSync(outputPath, result.pdf, "base64");
 
     return result.pdf;
 };
