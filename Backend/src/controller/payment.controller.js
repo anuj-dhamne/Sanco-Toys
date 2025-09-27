@@ -80,7 +80,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       const orderDB = new Order({
         user: user,
         products: productsWithDetails,
-        totalAmount:amount,
+        totalAmount:amount/100,
         paymentStatus: "paid",
         shippingAddress
     });
@@ -102,7 +102,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       const orderDB = new Order({
         user: user,
         products: productsWithDetails,
-        totalAmount:amount,
+        totalAmount:amount/100,
         paymentStatus: "failed",
         shippingAddress
     });
