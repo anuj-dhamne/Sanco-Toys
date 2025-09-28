@@ -38,6 +38,7 @@ export const verifyRazorpaySignature = async(req, res) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature ,shippingAddress,amount} = req.body;
 
+    let newAmount =amount/100;
 
     const userId = req.auth?.userId;
     const user = await User.findOne({ clerkId: userId });
@@ -80,7 +81,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       const orderDB = new Order({
         user: user,
         products: productsWithDetails,
-        totalAmount:amount/100,
+        totalAmount:newAmount,
         paymentStatus: "paid",
         shippingAddress
     });
@@ -102,7 +103,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       const orderDB = new Order({
         user: user,
         products: productsWithDetails,
-        totalAmount:amount/100,
+        totalAmount:newAmount,
         paymentStatus: "failed",
         shippingAddress
     });
