@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const images = [
   "/4.jpg",
-  "/13.jpg" // add your second image path here
+  "/14.jpg" // add your second image path here
 ];
 
 function HeroSection() {
