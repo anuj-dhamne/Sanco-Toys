@@ -126,7 +126,7 @@ const OrderSummaryPage = () => {
     (acc, item) => acc + item.product.price * item.quantity,
     0
   );
-  const shipping = 0;
+  const shipping = 40;
   const totalAmount = subtotal + shipping;
 
   return (
