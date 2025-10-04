@@ -33,8 +33,8 @@ const CartItemList = () => {
 
   const handleQuantityChange = async (productId, newQuantity) => {
     try {
-      console.log(" new Quantity : ",newQuantity);
-      console.log("product ID :",productId);
+      // console.log(" new Quantity : ",newQuantity);
+      // console.log("product ID :",productId);
       const token = await getToken();
       const res = await axios.patch(
         `${import.meta.env.VITE_SERVER}/cart/update-cart-item/${productId}`,
@@ -46,7 +46,7 @@ const CartItemList = () => {
       setCart(res.data.data);
       toast.success("Quantity updated!");
     } catch (err) {
-      console.error("Update quantity failed:", err);
+      // console.error("Update quantity failed:", err);
       toast.error("Failed to update quantity.");
     }
   };
@@ -54,7 +54,7 @@ const CartItemList = () => {
   const handleRemove = async (productId) => {
     try {
       const token = await getToken();
-      console.log("toten : ",token);
+      // console.log("toten : ",token);
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER}/cart/remove-from-cart/${productId}`,{},
         {
@@ -64,7 +64,7 @@ const CartItemList = () => {
       setCart(res.data.data);
       toast.success("Product removed!");
     } catch (err) {
-      console.error("Remove from cart failed:", err);
+      // console.error("Remove from cart failed:", err);
       toast.error("Failed to remove product.");
     }
   };

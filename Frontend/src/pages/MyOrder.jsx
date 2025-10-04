@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
+import { toast } from "react-toastify";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -21,7 +22,8 @@ const MyOrders = () => {
         );
         setOrders(res.data.data);
       } catch (err) {
-        console.error("Failed to fetch orders:", err);
+        // console.error("Failed to fetch orders:", err);
+        toast.error("Failed to fetch orders");
       }
     };
 

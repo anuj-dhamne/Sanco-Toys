@@ -28,7 +28,8 @@ const OrderSummaryPage = () => {
       );
       setCart(res.data.data);
     } catch (err) {
-      console.error("Failed to fetch cart:", err);
+      // console.error("Failed to fetch cart:", err);
+      toast.error("Failed to fetch cart");
     }
   };
 
@@ -85,7 +86,7 @@ const OrderSummaryPage = () => {
               toast.error("Payment Failed!");
             }
           } catch (err) {
-            console.error("Error verifying payment:", err);
+            // console.error("Error verifying payment:", err);
             toast.error("Payment verification failed!");
           }
         },
@@ -104,8 +105,8 @@ const OrderSummaryPage = () => {
       setLoading(false);
       rzp1.open();
     } catch (error) {
-      console.error("Error during payment:", error);
-      toast.error("Something went wrong!");
+      // console.error("Error during payment:", error);
+      toast.error("Error during payment !");
       setLoading(false);
     }
   };

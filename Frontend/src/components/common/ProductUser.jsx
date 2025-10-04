@@ -49,10 +49,10 @@ const ProductUser = ({ product }) => {
           },
         }
       );
-      console.log("Response for cart : ", res);
+      // console.log("Response for cart : ", res);
       toast.success("Item Added to Cart Successfully ! ");
     } catch (error) {
-      console.log("Error while adding to cart ! : ", error);
+      // console.log("Error while adding to cart ! : ", error);
       toast.error("Failed to add product to cart !");
     }
   }
@@ -70,13 +70,13 @@ const ProductUser = ({ product }) => {
           },
         }
       );
-      console.log("Response for cart : ", res);
+      // console.log("Response for cart : ", res);
       toast.success("Item Added to Cart Successfully ! ");
       setTimeout(() => {
         navigate("/cart");
       }, 2000);
     } catch (error) {
-      console.log("Error while adding to cart ! : ", error);
+      // console.log("Error while adding to cart ! : ", error);
       toast.error("Failed to add product to cart !");
     }
   }

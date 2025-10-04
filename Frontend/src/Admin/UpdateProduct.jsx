@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const UpdateProductForm = () => {
   const { state } = useLocation();
-  console.log("State : ",state);
+  // console.log("State : ",state);
   const { id } = useParams();
   const { getToken } = useAuth();
     const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ const UpdateProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formData: ",formData);
+    // console.log("formData: ",formData);
     const token = await getToken();
 
     const updatedData = new FormData();
@@ -68,7 +68,7 @@ const UpdateProductForm = () => {
     formData.images.forEach((img) => updatedData.append("images", img));
     formData.videos.forEach((vid) => updatedData.append("videos", vid));
 
-    console.log("data to update : ",updatedData);
+    // console.log("data to update : ",updatedData);
     try {
       await axios.patch(
         `${import.meta.env.VITE_SERVER}/product/update-product/${id}`,
@@ -82,7 +82,7 @@ const UpdateProductForm = () => {
       );
       toast.success("✅ Product updated successfully!");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       toast.error("❌ Failed to update product.");
     }
   };
