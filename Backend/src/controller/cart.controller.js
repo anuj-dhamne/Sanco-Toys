@@ -69,7 +69,7 @@ const removeFromCart=asyncHandler(async(req,res)=>{
         return res.status(404).json(new ApiResponse(404, null, "Cart not found"));
     }
     const itemIndex =cart.products.findIndex(item=>item.product._id.toString()===productId);
-    console.log("ItemIndex : ",itemIndex);
+    // console.log("ItemIndex : ",itemIndex);
     if(itemIndex>-1){
         cart.products.splice(itemIndex,1);
     }else{
@@ -77,7 +77,7 @@ const removeFromCart=asyncHandler(async(req,res)=>{
     }
    
     await cart.save();
-    console.log(" Cart after delete element : ",cart);
+    // console.log(" Cart after delete element : ",cart);
     return res.status(200).json(new ApiResponse(200, cart, "Product removed from cart"));
 });
 

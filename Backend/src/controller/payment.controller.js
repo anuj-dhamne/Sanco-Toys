@@ -17,8 +17,8 @@ export const createOrder = asyncHandler(async (req, res) => {
 });
   const { amount ,shippingAddress} = req.body; 
 
-  console.log("The the order stored in DB : ");
-  console.log("Amount received from client:", amount, typeof amount);
+  // console.log("The the order stored in DB : ");
+  // console.log("Amount received from client:", amount, typeof amount);
   const options = {
     amount: amount * 100,
     currency: "INR",
@@ -46,7 +46,7 @@ export const verifyRazorpaySignature = async(req, res) => {
     // if (!user) {
     //    return res.status(401).json(new ApiResponse(401,"null","Unauthorised req "));
     // }
-    console.log("Shipping address : ",shippingAddress);
+    // console.log("Shipping address : ",shippingAddress);
     let cart =await Cart.findOne({user:user._id});
     if(!cart || cart.products.length===0){
         return res.status(400).json(new ApiResponse(400,null,"The cart is empty . Add items for order !"));
@@ -89,7 +89,7 @@ export const verifyRazorpaySignature = async(req, res) => {
       await orderDB.save();
       orderDB.invoice=invoiceRes;
       await orderDB.save();
-      console.log("Order : ",orderDB);
+      // console.log("Order : ",orderDB);
       cart.products = [];
       await cart.save();
 
@@ -108,7 +108,7 @@ export const verifyRazorpaySignature = async(req, res) => {
         shippingAddress
     });
     await orderDB.save();
-    console.log("Order : ",orderDB);
+    // console.log("Order : ",orderDB);
     cart.products = [];
     await cart.save();
       return res.status(400).json({

@@ -12,9 +12,9 @@ const getAlluser=asyncHandler(async(req,res)=>{
 });
 
 const deleteUser=asyncHandler(async (req,res)=>{
-    console.log(" request params : ",req.params);
+    // console.log(" request params : ",req.params);
     const userId=req.params.id;
-    console.log(" req params (userid): ",userId );
+    // console.log(" req params (userid): ",userId );
     const user = await User.findById(userId);
     if (!user) {
         return res.status(404).json(new ApiResponse(404, null, "User not found"));

@@ -14,7 +14,7 @@ const createOrder = asyncHandler(async (req, res) => {
         return res.status(401).json(new ApiResponse(401, "null", "Unauthorised req "));
     }
     const { shippingAddress } = req.body;
-    console.log("Shipping address : ", shippingAddress);
+    // console.log("Shipping address : ", shippingAddress);
     let cart = await Cart.findOne({ user: user._id });
     if (!cart || cart.products.length === 0) {
         return res.status(400).json(new ApiResponse(400, null, "The cart is empty . Add items for order !"));
@@ -34,7 +34,7 @@ const createOrder = asyncHandler(async (req, res) => {
             };
         })
     );
-    console.log("Total Amount:", totalAmount);
+    // console.log("Total Amount:", totalAmount);
 
     const order = new Order({
         user: user._id,
@@ -44,7 +44,7 @@ const createOrder = asyncHandler(async (req, res) => {
         shippingAddress
     });
     await order.save();
-    console.log("Order : ", order);
+    // console.log("Order : ", order);
     cart.products = [];
     await cart.save();
 
@@ -59,27 +59,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
     }
 
     let orders = await Order.find({ user: user });
-    // If details not get then uncomment this !
 
-    // orders = await Promise.all(
-    //     orders.map(async (order) => {
-    //         const productsWithDetails = await Promise.all(
-    //             order.products.map(async (item) => {
-    //                 const product = await Product.findById(item.product);
-    //                 return {
-    //                     product: {
-    //                         _id: product._id,
-    //                         name: product.name,
-    //                         price: product.price
-    //                     },
-    //                     quantity: item.quantity
-    //                 };
-    //             })
-    //         );
-    //         order.products = productsWithDetails;
-    //         return order;
-    //     })
-    // );
 
     res.status(200).json(new ApiResponse(200, orders, "Orders retrieved successfully!"));
 });
@@ -145,11 +125,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, allOrder, "All orders are get fetched ! "));
 });
 
-const testOrder = asyncHandler(async (req, res) => {
-    const test_order = await Order.findById("68166f92cc1204954870d484");
-    sendInvoiceEmail(test_order.user, test_order.invoice);
-    return res.status(200).json("Email send !");
-})
+
 
 export {
     createOrder,
