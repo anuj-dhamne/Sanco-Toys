@@ -134,5 +134,4 @@ export {
     cancelOrder,
     updateOrderStatus,
     getAllOrders,
-    testOrder
 }

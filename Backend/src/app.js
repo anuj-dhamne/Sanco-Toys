@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import {ClerkExpressRequireAuth} from "@clerk/clerk-sdk-node"
-import { syncUser } from "./middlewares/syncUser.middleware.js"
+import { syncUser } from "./middlewares/syncuser.middleware.js"
 const app= express();
 import { sendInvoiceEmail } from "./utils/sendEmail.js"
 
