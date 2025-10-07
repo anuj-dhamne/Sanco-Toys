@@ -43,7 +43,7 @@ const handleDelete=async(product)=>{
     category,
   } = product;
 
-  const mrp = Math.round(price + (price * discount) / 100);
+  const mrp = Math.round(price * (1 - discount / 100));
   const [selectedMedia, setSelectedMedia] = useState(images[0] || "");
 
   return (
