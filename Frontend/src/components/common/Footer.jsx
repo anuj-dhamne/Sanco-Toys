@@ -47,7 +47,7 @@ const Footer = () => {
             <h4 className="font-semibold text-black">Support</h4>
             
             <a href="/customer-care" className="text-red-500 hover:font-bold block">Customer Care</a>
-            <a href="#faq" className="text-purple-500 hover:font-bold block">FAQs</a>
+            {/* <a href="#faq" className="text-purple-500 hover:font-bold block">FAQs</a> */}
             <div className="flex space-x-4 pt-2 ">
               <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
                 <Instagram className="w-5 h-5 hover:text-pink-500 hover:w-6 h-6" />

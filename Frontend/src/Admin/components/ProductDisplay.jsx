@@ -121,8 +121,8 @@ const handleDelete=async(product)=>{
         <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
 
         <div className="flex items-center space-x-3">
-          <span className="text-xl font-bold text-gray-900">₹{price}</span>
-          <span className="line-through text-gray-400 text-sm">₹{mrp}</span>
+          <span className="text-xl font-bold text-gray-900">₹{mrp}</span>
+          <span className="line-through text-gray-400 text-sm">₹{price}</span>
           <span className="text-green-600 text-sm">({discount}% off)</span>
         </div>
 

@@ -23,7 +23,7 @@ const ProductUser = ({ product }) => {
 
   const { getToken } = useAuth();
 
-  const calculatedMRP = Math.round(price / (1 - discount / 100));
+  const calculatedMRP = Math.round(price * (1 - discount / 100));
   const [selectedMedia, setSelectedMedia] = useState(images[0]);
   const [quantity, setQuantity] = useState(1);
 
@@ -143,8 +143,8 @@ const ProductUser = ({ product }) => {
           </p>
 
           <div className="flex items-center space-x-3">
-            <span className="text-2xl font-bold text-gray-900">₹{price}</span>
-            <span className="line-through text-gray-500">₹{calculatedMRP}</span>
+            <span className="text-2xl font-bold text-gray-900">₹{calculatedMRP}</span>
+            <span className="line-through text-gray-500">₹{price}</span>
             <span className="text-green-600 font-semibold">-{discount}% OFF</span>
           </div>
 
